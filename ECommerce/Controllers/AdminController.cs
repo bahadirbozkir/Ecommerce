@@ -109,6 +109,7 @@ namespace ECommerce.Controllers
         {
             if (ModelState.IsValid)
             {
+
                 var mappedProduct = new ProductDTO
                 {
                     Barcode = product.Barcode,
