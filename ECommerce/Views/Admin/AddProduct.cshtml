@@ -1,0 +1,61 @@
+﻿@model ECommerce.Service.DTO.ProductDTO
+@{
+    ViewBag.Title = "UpdateProduct";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <h1 class="mt-4">Tables</h1>
+    <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item">Dashboard</li>
+        <li class="breadcrumb-item">Products</li>
+        <li class="breadcrumb-item active">Add New Product</li>
+    </ol>
+    <div class="card-header">
+        <i class="fas fa-table mr-1"></i>
+        Add new Product
+    </div>
+    <div class="card mb-4">
+        <div class="card-body">
+            @using (Html.BeginForm("AddProduct", "Admin", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    <label class="control-label">Name</label>
+                    @Html.TextBoxFor(x => x.ProductName, new { @class = "form-control", placeholder = "Product Name", required = "required", autofocus = "autofocus" })
+                    @Html.ValidationMessageFor(x => x.ProductName, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Barcode</label>
+                    @Html.TextBoxFor(x => x.Barcode, new { @class = "form-control", placeholder = "Product Barcode", required = "required" })
+                    @Html.ValidationMessageFor(x => x.Barcode, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Description</label>
+                    @Html.TextBoxFor(x => x.Description, new { @class = "form-control", placeholder = "Product Description", required = "required" })
+                    @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Price</label>
+                    @Html.TextBoxFor(x => x.Price, new { @class = "form-control", placeholder = "Product Price", required = "required" })
+                    @Html.ValidationMessageFor(x => x.Price, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Total in Stock</label>
+                    @Html.TextBoxFor(x => x.ProductCount, new { @class = "form-control", placeholder = "Product Stock", required = "required" })
+                    @Html.ValidationMessageFor(x => x.ProductCount, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    <label class="control-label">Product Image</label>
+                    @Html.TextBoxFor(x => x.UploadedFile, new { @class = "form-control", placeholder = "Product Image", required = "required", type = "file" })
+                    @Html.ValidationMessageFor(x => x.UploadedFile, "", new { @class = "text-danger" })
+                </div>
+
+                <a href=@Url.Action("Products") class="btn btn-danger">Back</a>
+                <input type="submit" class="btn btn-primary" value="Submit" />
+            }
+
+        </div>
+    </div>
+</div>
+

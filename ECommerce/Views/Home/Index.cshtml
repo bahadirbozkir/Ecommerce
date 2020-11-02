@@ -1,0 +1,28 @@
+﻿@model IEnumerable<ECommerce.Models.ProductModel>
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="jumbotron">
+    <h1>Simple E-Commerce & Administrator site for Inveon</h1>
+    <p class="lead">Inveon backend workout</p>
+</div>
+
+<div class="row">
+    @foreach (var product in Model)
+    {
+        <div class="col-md-4">
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="@Url.Action("ProductImage", new { productId = product.ProductId})" width="100" height="100" alt="Card image">
+                <div class="card-body">
+                    <p class="card-text">Name: @product.ProductName</p>
+                    <p class="card-text">Description: @product.Description</p>
+                    <p class="card-text">Price: @product.Price.ToString("C2")</p>
+                    <p class="card-text">Total in Stock: @product.ProductCount</p>
+                    <p class="card-text">Barcode: @product.Barcode</p>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
